@@ -12,7 +12,7 @@ body {
 .title {
   text-align: center;
   margin: 0;
-  font-size: 8em;
+  font-size: 5em;
   font-family: "Helvetica";
   font-weight: normal;
   color: white;
@@ -25,27 +25,154 @@ body {
 }
 
 .card {
-  width: 300px;
+  width: 315px;
+  height: 1000px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 5px;
+  display: flex; /* Enables Flexbox */
+  flex-direction: column; /* Stacks child elements vertically */
+  justify-content: space-between; /* Ensures proper spacing */
+  box-sizing: border-box;
 }
 
 .card-content {
   padding: 20px;
   font-family: "Verdana";
-  color: #777;
+  margin: 0 auto;
+  color: #444444;
+  flex: 1;
+  display: flex; /* Enables Flexbox */
+  flex-direction: column; /* Stacks child elements vertically */
+  justify-content: space-between; /* Ensures proper spacing */
+  height: 100%;
 }
 
 .card-content h2 {
   margin-top: 0;
   font-size: 20px;
+  text-align: center;
 }
 
 .card img {
-  width: 100%;
-  height: auto;
+  width: 245px;
+  height: 300px;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block; 
+}
+
+.card-genres {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.genre-name {
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+
+}
+
+.price {
+  margin-top: 10px; /* Adds spacing above the price */
+  padding: 8px; /* Adds padding inside the price box */
+  background-color: #e8f5e9; /* Light green background for a positive feel */
+  border-radius: 8px; /* Rounds the corners of the price box */
+  border: 1px solid #c8e6c9; /* Adds a subtle green border */
+  font-weight: bold; /* Makes the text bold */
+  font-size: 16px; /* Sets a readable font size */
+  color: #2e7d32; /* Dark green text color for emphasis */
+  text-align: center; /* Centers the price text */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for depth */
+}
+.card-description {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-top: 10px;
+  height: 100px;
+}
+
+.card-ratings {
+  margin-top: auto; /* Pushes the ratings to the bottom of the card-content */
+  text-align: center; /* Centers the ratings text */
+  padding: 25px 0; /* Adds padding for spacing */
+  height: 15px;
+}
+
+.platforms {
+  display: flex; /* Enables Flexbox for horizontal alignment */
+  justify-content: center; /* Centers the platforms horizontally */
+  align-items: center; /* Aligns items vertically */
+  flex-wrap: wrap; /* Allows wrapping if there are too many platforms */
+  gap: 5px; /* Adds spacing between platform items */
+  margin: 70px 0; /* Adds spacing above and below the platforms section */
+  font-size: 12px; /* Sets a readable font size */
+  color: #dbdbdb; /* Neutral dark gray color for the text */
+}
+
+.platform {
+  padding: 2px 10px; /* Adds padding inside each platform tag */
+  background-color: #896bdd; /* Light green background for a positive feel */
+  border-radius: 15px; /* Rounds the corners of each platform tag */
+  font-weight: bold; /* Makes the text bold */
+  color: #dddddd; /* Dark green text color for emphasis */
+  border: 1px solid #3b3b3b; /* Adds a subtle green border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for depth */
+  text-align: center; /* Centers the text inside each platform tag */
+  white-space: nowrap; /* Prevents text from wrapping inside the tag */
+}
+
+.review-text {
+  display: block; /* Forces the review text to appear on its own line */
+  font-size: 14px; /* Sets a readable font size */
+  font-weight: bold; /* Makes the review text bold */
+  color: #2e7d32; /* Dark green color for positive reviews */
+}
+
+.review-count {
+  display: block; /* Forces the review count to appear on its own line */
+  font-size: 12px; /* Slightly smaller font size for the review count */
+  color: #555; /* Neutral gray color for the review count */
+}
+
+.publisher {
+  display: flex; /* Enables Flexbox for horizontal alignment */
+  justify-content: center; /* Centers the publisher text */
+  align-items: center; /* Aligns items vertically */
+  margin-top: 10px; /* Adds spacing above the publisher section */
+  padding: 5px 10px; /* Adds padding inside the publisher box */
+  background-color: #f0f8ff; /* Light blue background for a clean look */
+  border-radius: 8px; /* Rounds the corners of the publisher box */
+  font-size: 14px; /* Sets a readable font size */
+  font-weight: bold; /* Makes the text bold */
+  color: #333; /* Dark text color for contrast */
+  border: 1px solid #ccc; /* Adds a subtle border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for depth */
+  height: 30px;
+} 
+
+.release-date {
+  text-align: center; /* Centers the release date text */
+  margin: 10px 0; /* Adds spacing above and below the release date */
+  padding: 5px 10px; /* Adds padding inside the release date box */
+  background-color: #fff3cd; /* Light yellow background for a distinct look */
+  border-radius: 8px; /* Rounds the corners of the release date box */
+  font-size: 14px; /* Sets a readable font size */
+  font-weight: bold; /* Makes the text bold */
+  color: #856404; /* Dark yellow-brown text color for contrast */
+  border: 1px solid #ffeeba; /* Adds a subtle yellow border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for depth */
+  text-transform: uppercase; /* Makes the release date text uppercase */
 }
 
 .footer {
