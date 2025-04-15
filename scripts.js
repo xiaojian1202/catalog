@@ -47,32 +47,18 @@ function showCards() {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
+  
+  const sorting = document.querySelector("sort-options").value;
+  if (sorting === "price-asc") {
+    
+  }
+
+
+
+
 
   for (let i = 0; i < games.length; i++) {
     const curr = games[i];
-    /*let name = games[i].name;
-    let description = games[i].description;
-    let genre = games[i].genre;
-    let steam = games[i].ratings[0];
-    let imdb = games[i].ratings[1];
-    let metacritic = games[i].ratings[2];
-    let publisher = games[i].publisher;
-    let country = games[i].country;
-    let releaseDate = games[i].releaseDate;
-    let platforms = games[i].platforms;
-    let price = games[i].price;
-    let imgURL = games[i].imageURL;*/
-    // This part of the code doesn't scale very well! After you add your
-    // own data, you'll need to do something totally different here.
-    /*let imageURL = "";
-    if (i == 0) {
-      imageURL = FRESH_PRINCE_URL;
-    } else if (i == 1) {
-      imageURL = CURB_POSTER_URL;
-    } else if (i == 2) {
-      imageURL = EAST_LOS_HIGH_POSTER_URL;
-    }*/
-      
     const nextCard = templateCard.cloneNode(true); // Copy the template card
     editCardContent(nextCard, curr); // Edit the contents of the card
     cardContainer.appendChild(nextCard); // Add new card to the container
@@ -165,3 +151,4 @@ function removeLastCard() {
   games.pop(); // Remove last item in titles array
   showCards(); // Call showCards again to refresh
 }
+

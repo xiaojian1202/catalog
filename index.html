@@ -9,7 +9,7 @@
 
   <body>
     <header class="main-header">
-      <h1 class="title">Masterpiece of Modern Gaming</h1>
+      <h1 class="title">Best Sellers of Modern Gaming</h1>
     </header>
     <div id="card-container"></div>
     <div class="card" style="display: none">
@@ -31,6 +31,38 @@
           <p>Release Date</p>
         </div>
       </div>
+    </div>
+
+    <!-- Genre Dropdown -->
+    <select id="genre-filter">
+      <option value="">All Genres</option>
+      <option value="Action">Action</option>
+      <option value="Adventure">Adventure</option>
+      <option value="RPG">RPG</option>
+    </select>
+
+    <!-- Platform Checkboxes -->
+    <div>
+      <label><input type="checkbox" value="PC" id="platform-pc"> PC</label>
+      <label><input type="checkbox" value="PS5" id="platform-ps5"> PS5</label>
+    </div>
+
+    <!-- Max Price -->
+    <input type="number" id="price-filter" placeholder="Max Price">
+
+    <div id="sort">
+      <label for="sort-options">Sort by:</label>
+      <select id="sort-options">
+        <option value="">Default</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="release-asc">Release Date: Oldest to Newest</option>
+        <option value="release-desc">Release Date: Newest to Oldest</option>
+        <option value="rating-desc">Rating: High to Low</option>
+        <option value="rating-asc">Rating: Low to High</option>
+        <option value="alphabet-asc">Name: Ascending Order</option>
+        <option value="alphabet-desc">Name: Descending Order</option>
+      </select>
     </div>
     <div class="footer">
       <button onclick="quoteAlert();">Get A Quote!</button>
