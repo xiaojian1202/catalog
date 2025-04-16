@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LA TV Shows | Home</title>
+    <title>Modern Gaming Hits | Home</title>
     <meta name="description" content="A Catalog of Popular Games from the Modern Age" />
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="scripts.js"></script>
@@ -11,6 +11,18 @@
     <header class="main-header">
       <h1 class="title">Best Sellers of Modern Gaming</h1>
     </header>
+    <div id="sort" class="sort-container">
+      <label for="sort-options" class="sort-label">Sort by:</label>
+      <select id="sort-options" class="sort-dropdown">
+        <option value="">Default</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="release-asc">Release Date: Oldest to Newest</option>
+        <option value="release-desc">Release Date: Newest to Oldest</option>
+        <option value="rating-desc">Rating: High to Low</option>
+        <option value="alphabet-asc">Name: Ascending Order</option>
+      </select>
+    </div>
     <div id="card-container"></div>
     <div class="card" style="display: none">
       <div class="card-content">
@@ -30,35 +42,63 @@
       </div>
     </div>
 
-    <!-- Genre Dropdown -->
-    <select id="genre-filter">
-      <option value="">All Genres</option>
-      <option value="Action">Action</option>
-      <option value="Adventure">Adventure</option>
-      <option value="RPG">RPG</option>
-    </select>
-
-    <!-- Platform Checkboxes -->
-    <div>
-      <label><input type="checkbox" value="PC" id="platform-pc"> PC</label>
-      <label><input type="checkbox" value="PS5" id="platform-ps5"> PS5</label>
-    </div>
-
-    <!-- Max Price -->
-    <input type="number" id="price-filter" placeholder="Max Price">
-
-    <div id="sort">
-      <label for="sort-options">Sort by:</label>
-      <select id="sort-options">
-        <option value="">Default</option>
-        <option value="price-asc">Price: Low to High</option>
-        <option value="price-desc">Price: High to Low</option>
-        <option value="release-asc">Release Date: Oldest to Newest</option>
-        <option value="release-desc">Release Date: Newest to Oldest</option>
-        <option value="rating-desc">Rating: High to Low</option>
-        <option value="alphabet-asc">Name: Ascending Order</option>
+    <div id="filters">
+      <!-- Genre Dropdown -->
+      <label for="genre-filter">Filter by Genre:</label>
+      <select id="genre-filter">
+        <option value="">All Genres</option>
+        <option value="Action">Action</option>
+        <option value="Adventure">Adventure</option>
+        <option value="RPG">RPG</option>
+        <option value="Open World">Open World</option>
+        <option value="Story Rich">Story Rich</option>
       </select>
-    </div>
+    
+      <div id="filter-container">
+        <label for="filter-dropdown">Filters</label>
+        <button class="filter-button">Toggler Filters</button>
+        <details id="filter-dropdown">
+          <summary>Click to expand filters</summary>
+          
+          <!-- Platform Checkboxes -->
+          <div>
+            <h4>Filter by Platform:</h4>
+            <label><input type="checkbox" value="PC" class="filter-platform"> PC</label>
+            <label><input type="checkbox" value="PS5" class="filter-platform"> PS5</label>
+            <label><input type="checkbox" value="Xbox One" class="filter-platform"> Xbox One</label>
+            <label><input type="checkbox" value="PS4" class="filter-platform"> PS4</label>
+          </div>
+          
+          <!-- Max Price -->
+          <div>
+            <h4>Filter by Max Price:</h4>
+            <label>
+              <input type="number" id="price-filter" placeholder="Enter Max Price">
+            </label>
+          </div>
+          
+          <!-- Rating Filter -->
+          <div>
+            <h4>Filter by Rating:</h4>
+            <label>
+              <select id="filter-rating">
+                <option value="">All Ratings</option>
+                <option value="Overwhelmingly Positive">Overwhelmingly Positive</option>
+                <option value="Very Positive">Very Positive</option>
+                <option value="Mostly Positive">Mostly Positive</option>
+                <option value="Mixed">Mixed</option>
+              </select>
+            </label>
+          </div>
+      
+          <!-- Apply Filters Button -->
+          <div>
+            <button id="apply-filters">Apply Filters</button>
+          </div>
+        </details>
+      </div>
+      
+
     <div class="footer">
       <button onclick="quoteAlert();">Get A Quote!</button>
       <button onclick="removeLastCard();">Remove A Card!</button>

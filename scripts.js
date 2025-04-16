@@ -124,6 +124,61 @@ document.addEventListener("DOMContentLoaded", showCards);
 document.getElementById("sort-options").addEventListener("change", function () {
   showCards(); // Refresh the cards when the sorting option changes
 });
+// Add an event listener to the "Apply Filters" button
+document.getElementById("apply-filters").addEventListener("click", function () {
+  // Get selected genre
+  const selectedGenre = document.getElementById("genre-filter").value;
+
+  // Get selected platforms
+  const selectedPlatforms = Array.from(
+    document.querySelectorAll(".filter-platform:checked")
+  ).map((checkbox) => checkbox.value);
+
+  // Get max price
+  const maxPrice = parseFloat(document.getElementById("price-filter").value);
+
+  // Get selected rating
+  const selectedRating = document.getElementById("filter-rating").value;
+
+  // Filter the games array
+  const filteredGames = games.filter((game) => {
+    // Check if the game matches the selected genre
+    const matchesGenre = !selectedGenre || game.genre.includes(selectedGenre);
+
+    // Check if the game matches the selected platforms
+    const matchesPlatform =
+      selectedPlatforms.length === 0 ||
+      selectedPlatforms.some((platform) => game.platforms.includes(platform));
+
+    // Check if the game matches the max price
+    const matchesPrice =
+      isNaN(maxPrice) || parseFloat(game.price.replace("$", "")) <= maxPrice;
+
+    // Check if the game matches the selected rating
+    const matchesRating =
+      !selectedRating || game.ratingSteam[0] === selectedRating;
+
+    // Return true if the game matches all selected filters
+    return matchesGenre && matchesPlatform && matchesPrice && matchesRating;
+  });
+
+  // Update the displayed cards
+  showFilteredCards(filteredGames);
+});
+
+// Function to display filtered cards
+function showFilteredCards(filteredGames) {
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = ""; // Clear existing cards
+
+  const templateCard = document.querySelector(".card");
+
+  filteredGames.forEach((game) => {
+    const nextCard = templateCard.cloneNode(true);
+    editCardContent(nextCard, game);
+    cardContainer.appendChild(nextCard);
+  });
+}
 
 function sortCards(value) {
   var cloneGames = [...games]; // Clone the games array
@@ -133,7 +188,7 @@ function sortCards(value) {
       cloneGames.sort(function (a, b) {
         const priceA = parseFloat(a.price.replace("$", ""));
         const priceB = parseFloat(b.price.replace("$", ""));
-        console.log("Compare Prices:", a.price, b.price);
+        //console.log("Compare Prices:", a.price, b.price);
         return priceA - priceB;
       });
       break;
@@ -142,21 +197,21 @@ function sortCards(value) {
       cloneGames.sort(function (a, b) {
         const priceA = parseFloat(a.price.replace("$", ""));
         const priceB = parseFloat(b.price.replace("$", ""));
-        console.log("Compare Prices:", a.price, b.price);
+        //console.log("Compare Prices:", a.price, b.price);
         return priceB - priceA;
       });
       break;
 
     case "release-asc":
       cloneGames.sort(function (a, b) {
-        console.log("Compare Date:", a.releaseDate, b.releaseDate);
+        //console.log("Compare Date:", a.releaseDate, b.releaseDate);
         return a.releaseDate - b.releaseDate;
       });
       break;
 
     case "release-desc":
       cloneGames.sort(function (a, b) {
-        console.log("Compare Date:", a.releaseDate, b.releaseDate);
+        //console.log("Compare Date:", a.releaseDate, b.releaseDate);
         return b.releaseDate - a.releaseDate;
       });
       break;
@@ -174,25 +229,28 @@ function sortCards(value) {
       cloneGames.sort(function (a, b) {
         const ratingA = ratingOrder[a.ratingSteam[0]];
         const ratingB = ratingOrder[b.ratingSteam[0]];
-        console.log("Compare Prices:", ratingA, ratingB);
+        //console.log("Compare Ratings:", ratingA, ratingB);
         return ratingB - ratingA;
       });
       break;
 
     case "alphabet-asc": {
       cloneGames.sort(function (a, b) {
-        console.log("Compare Names:", a.name, b.name);
+        //console.log("Compare Names:", a.name, b.name);
         return a.name.localeCompare(b.name);
       });
       break;
     }
   
     default:
+      return cloneGames; // If no sorting option is selected, return the original array
       break;
   }
-
-  console.log("")
   return cloneGames;
+}
+
+function filterCards() {
+
 }
 
 function quoteAlert() {

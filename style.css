@@ -160,6 +160,79 @@ body {
   text-transform: uppercase; /* Makes the release date text uppercase */
 }
 
+/* Sort Container Styling */
+.sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto; /* Center the container */
+  padding: 15px;
+  background-color: #252525; /* Light blue-gray background for contrast */
+  border: 1px solid #d1d9e6; /* Subtle border */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  max-width: 500px; /* Limit the width */
+  gap: 10px; /* Add spacing between elements */
+}
+
+/* Sort Label Styling */
+.sort-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff; /* Dark blue-gray text for readability */
+  margin-right: 10px;
+  text-transform: uppercase; /* Make the label text uppercase */
+}
+
+/* Sort Dropdown Styling */
+.sort-dropdown {
+  font-size: 16px;
+  padding: 10px 15px;
+  border: 1px solid #b0c4de; /* Subtle blue border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #4b4b4b; /* White background */
+  color: #ffffff; /* Dark text for readability */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth hover effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+/* Sort Dropdown Hover Effect */
+.sort-dropdown:hover {
+  border-color: #3498db; /* Highlight border on hover */
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Subtle blue glow */
+}
+
+/* Sort Dropdown Focus Effect */
+.sort-dropdown:focus {
+  outline: none;
+  border-color: #3498db; /* Highlight border on focus */
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Subtle blue glow */
+}
+
+/* Sort Dropdown Option Styling */
+.sort-dropdown option {
+  font-size: 16px;
+  color: #34495e; /* Dark text for readability */
+  background-color: #ffffff; /* White background */
+}
+
+/* Add a subtle animation to the dropdown */
+.sort-dropdown {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .footer {
   display: flex;
   justify-content: center;
