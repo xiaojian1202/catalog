@@ -32,13 +32,6 @@ const EAST_LOS_HIGH_POSTER_URL =
 
 import { games } from "./data.js";
 
-// This is an array of strings (TV show titles)
-/*let titles = [
-  "Fresh Prince of Bel Air",
-  "Curb Your Enthusiasm",
-  "East Los High",
-  "The Office",
-];*/
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
 
@@ -47,18 +40,13 @@ function showCards() {
   const cardContainer = document.getElementById("card-container");
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
-  
-  const sorting = document.querySelector("sort-options").value;
-  if (sorting === "price-asc") {
-    
-  }
 
+  const sortValue = document.getElementById("sort-options").value;
+  const sortedCards = sortCards(sortValue);
+  console.log("selected sorting value:", sortValue);
 
-
-
-
-  for (let i = 0; i < games.length; i++) {
-    const curr = games[i];
+  for (let i = 0; i < sortedCards.length; i++) {
+    const curr = sortedCards[i];
     const nextCard = templateCard.cloneNode(true); // Copy the template card
     editCardContent(nextCard, curr); // Edit the contents of the card
     cardContainer.appendChild(nextCard); // Add new card to the container
@@ -110,12 +98,6 @@ function editCardContent(card, game) {
   reviewCount.textContent = game.ratingSteam[1];
   cardRatings.appendChild(reviewCount);
 
-  //Update publisher of the card
-  const cardPublisher = card.querySelector(".publisher");
-  if (cardPublisher) {
-    cardPublisher.textContent = "Publisher: " + game.publisher;
-  }
-
   //Update country of the card
   const cardDate = card.querySelector(".release-date");
   if (cardDate) {
@@ -139,6 +121,79 @@ function editCardContent(card, game) {
 
 // This calls the addCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards);
+document.getElementById("sort-options").addEventListener("change", function () {
+  showCards(); // Refresh the cards when the sorting option changes
+});
+
+function sortCards(value) {
+  var cloneGames = [...games]; // Clone the games array
+
+  switch (value) {
+    case "price-asc":
+      cloneGames.sort(function (a, b) {
+        const priceA = parseFloat(a.price.replace("$", ""));
+        const priceB = parseFloat(b.price.replace("$", ""));
+        console.log("Compare Prices:", a.price, b.price);
+        return priceA - priceB;
+      });
+      break;
+
+    case "price-desc":
+      cloneGames.sort(function (a, b) {
+        const priceA = parseFloat(a.price.replace("$", ""));
+        const priceB = parseFloat(b.price.replace("$", ""));
+        console.log("Compare Prices:", a.price, b.price);
+        return priceB - priceA;
+      });
+      break;
+
+    case "release-asc":
+      cloneGames.sort(function (a, b) {
+        console.log("Compare Date:", a.releaseDate, b.releaseDate);
+        return a.releaseDate - b.releaseDate;
+      });
+      break;
+
+    case "release-desc":
+      cloneGames.sort(function (a, b) {
+        console.log("Compare Date:", a.releaseDate, b.releaseDate);
+        return b.releaseDate - a.releaseDate;
+      });
+      break;
+
+    case "rating-desc":
+      const ratingOrder = {
+        "Overwhelmingly Positive": 5,
+        "Very Positive": 4,
+        "Mostly Positive": 3,
+        "Mixed": 2,
+        "Mostly Negative": 1,
+        "Very Negative": 0,
+      }
+
+      cloneGames.sort(function (a, b) {
+        const ratingA = ratingOrder[a.ratingSteam[0]];
+        const ratingB = ratingOrder[b.ratingSteam[0]];
+        console.log("Compare Prices:", ratingA, ratingB);
+        return ratingB - ratingA;
+      });
+      break;
+
+    case "alphabet-asc": {
+      cloneGames.sort(function (a, b) {
+        console.log("Compare Names:", a.name, b.name);
+        return a.name.localeCompare(b.name);
+      });
+      break;
+    }
+  
+    default:
+      break;
+  }
+
+  console.log("")
+  return cloneGames;
+}
 
 function quoteAlert() {
   console.log("Button Clicked!");
