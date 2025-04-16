@@ -167,7 +167,7 @@ body {
   justify-content: center;
   margin: 20px auto; /* Center the container */
   padding: 15px;
-  background-color: #252525; /* Light blue-gray background for contrast */
+  background-color: #252525; /* Dark background for contrast */
   border: 1px solid #d1d9e6; /* Subtle border */
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
@@ -179,7 +179,7 @@ body {
 .sort-label {
   font-size: 18px;
   font-weight: bold;
-  color: #ffffff; /* Dark blue-gray text for readability */
+  color: #ffffff; /* White text for readability */
   margin-right: 10px;
   text-transform: uppercase; /* Make the label text uppercase */
 }
@@ -190,8 +190,8 @@ body {
   padding: 10px 15px;
   border: 1px solid #b0c4de; /* Subtle blue border */
   border-radius: 8px; /* Rounded corners */
-  background-color: #4b4b4b; /* White background */
-  color: #ffffff; /* Dark text for readability */
+  background-color: #4b4b4b; /* Dark background */
+  color: #ffffff; /* White text for readability */
   cursor: pointer;
   transition: all 0.3s ease; /* Smooth hover effect */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
@@ -232,6 +232,7 @@ body {
     transform: translateY(0);
   }
 }
+
 
 .footer {
   display: flex;

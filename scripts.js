@@ -42,8 +42,9 @@ function showCards() {
   const templateCard = document.querySelector(".card");
 
   const sortValue = document.getElementById("sort-options").value;
+  //const filteredCards = filterCards();
   const sortedCards = sortCards(sortValue);
-  console.log("selected sorting value:", sortValue);
+  
 
   for (let i = 0; i < sortedCards.length; i++) {
     const curr = sortedCards[i];
@@ -124,62 +125,9 @@ document.addEventListener("DOMContentLoaded", showCards);
 document.getElementById("sort-options").addEventListener("change", function () {
   showCards(); // Refresh the cards when the sorting option changes
 });
-// Add an event listener to the "Apply Filters" button
-document.getElementById("apply-filters").addEventListener("click", function () {
-  // Get selected genre
-  const selectedGenre = document.getElementById("genre-filter").value;
-
-  // Get selected platforms
-  const selectedPlatforms = Array.from(
-    document.querySelectorAll(".filter-platform:checked")
-  ).map((checkbox) => checkbox.value);
-
-  // Get max price
-  const maxPrice = parseFloat(document.getElementById("price-filter").value);
-
-  // Get selected rating
-  const selectedRating = document.getElementById("filter-rating").value;
-
-  // Filter the games array
-  const filteredGames = games.filter((game) => {
-    // Check if the game matches the selected genre
-    const matchesGenre = !selectedGenre || game.genre.includes(selectedGenre);
-
-    // Check if the game matches the selected platforms
-    const matchesPlatform =
-      selectedPlatforms.length === 0 ||
-      selectedPlatforms.some((platform) => game.platforms.includes(platform));
-
-    // Check if the game matches the max price
-    const matchesPrice =
-      isNaN(maxPrice) || parseFloat(game.price.replace("$", "")) <= maxPrice;
-
-    // Check if the game matches the selected rating
-    const matchesRating =
-      !selectedRating || game.ratingSteam[0] === selectedRating;
-
-    // Return true if the game matches all selected filters
-    return matchesGenre && matchesPlatform && matchesPrice && matchesRating;
-  });
-
-  // Update the displayed cards
-  showFilteredCards(filteredGames);
+document.getElementById("apply-genre-filter").addEventListener("click", function () {
+  filterCards(); // Call the filterCards function when the button is clicked
 });
-
-// Function to display filtered cards
-function showFilteredCards(filteredGames) {
-  const cardContainer = document.getElementById("card-container");
-  cardContainer.innerHTML = ""; // Clear existing cards
-
-  const templateCard = document.querySelector(".card");
-
-  filteredGames.forEach((game) => {
-    const nextCard = templateCard.cloneNode(true);
-    editCardContent(nextCard, game);
-    cardContainer.appendChild(nextCard);
-  });
-}
-
 function sortCards(value) {
   var cloneGames = [...games]; // Clone the games array
 
@@ -250,18 +198,24 @@ function sortCards(value) {
 }
 
 function filterCards() {
-
+  const selectedGenres = document.getElementById("genre-filter").value;
+  console.log(selectedGenres);
+  const filteredGames = games.filter((game) => {
+    return !selectedGenres || game.genre.includes(selectedGenres);
+  });
+  showFilteredCards(filteredGames);
 }
 
-function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!"
-  );
-}
+function showFilteredCards(filtered) {
+  const cardContainer = document.getElementById("card-container");
+  cardContainer.innerHTML = "";
+  const templateCard = document.querySelector(".card");
 
-function removeLastCard() {
-  games.pop(); // Remove last item in titles array
-  showCards(); // Call showCards again to refresh
+  for (let i = 0; i < filtered.length; i++) {
+    const curr = filtered[i];
+    const nextCard = templateCard.cloneNode(true);
+    editCardContent(nextCard, curr); 
+    cardContainer.appendChild(nextCard);
+  }
 }
 

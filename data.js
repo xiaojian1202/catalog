@@ -8,7 +8,7 @@ export const games = [
         name: "Black Myth Wukong",
         description: "An action RPG based on the classic Chinese novel Journey to the West. Players control Wukong, a monkey king with various abilities, as they battle mythical creatures and explore a vibrant world.",
         imageURL: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a6/Black_Myth_Wukong_cover_art.jpg/250px-Black_Myth_Wukong_cover_art.jpg",
-        genre: [ "Action", "Action RPG", "Mythology", "Souls-like", "3D"],
+        genre: ["Action", "Action RPG", "Mythology", "Souls-like", "3D"],
         price: "$59.99",
         ratingSteam: ["Overwhelmingly Positive", "800k+ reviews"],
         releaseDate: "2024",
