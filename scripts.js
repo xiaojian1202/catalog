@@ -128,6 +128,11 @@ document.getElementById("sort-options").addEventListener("change", function () {
 document.getElementById("apply-genre-filter").addEventListener("click", function () {
   filterCards(); // Call the filterCards function when the button is clicked
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  fillGenre();
+  showCards();
+});
 function sortCards(value) {
   var cloneGames = [...games]; // Clone the games array
 
@@ -219,3 +224,26 @@ function showFilteredCards(filtered) {
   }
 }
 
+function fillGenre() {
+  const genreDropdown = document.getElementById("genre-filter");
+  genreDropdown.innerHTML = "";
+
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "All Genres";
+  genreDropdown.appendChild(defaultOption);
+
+  const genres = new Set();
+  games.forEach((game) => {
+    game.genre.forEach((genre) => {
+      genres.add(genre);
+    });
+  });
+
+  genres.forEach((genre) => {
+    const option = document.createElement("option");
+    option.value = genre;
+    option.textContent = genre;
+    genreDropdown.appendChild(option);
+  });
+}
