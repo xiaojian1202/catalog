@@ -20,9 +20,15 @@ body {
 
 #card-container {
   display: flex;
-  justify-content: center;
-  margin: 20px;
+  flex-wrap: wrap; /* Allow cards to wrap to the next row */
+  justify-content: center; /* Center the cards horizontally */
+  gap: 20px; /* Add spacing between cards */
+  margin: 20px auto; /* Center the container and add vertical spacing */
+  max-width: 1200px; /* Optional: Limit the maximum width of the container */
+  padding: 10px; /* Add padding inside the container */
+  box-sizing: border-box; /* Include padding and border in the element's total width/height */
 }
+
 
 .card {
   width: 315px;
@@ -56,11 +62,12 @@ body {
 }
 
 .card img {
-  width: 245px;
-  height: 300px;
-  object-fit: cover;
+  width: 100%; /* Make the image take up the full width of the card */
+  height: 300px; /* Set a fixed height for all images */
+  object-fit: cover; /* Ensures the image fills the area while maintaining aspect ratio */
+  border-radius: 5px; /* Optional: Add rounded corners to match the card */
   margin: 0 auto;
-  display: block; 
+  display: block;
 }
 
 .card-genres {
@@ -234,23 +241,65 @@ body {
 }
 
 
-.footer {
+/* Style for the filter container */
+#filters {
   display: flex;
+  align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  gap: 10px; /* Add spacing between dropdown and button */
+  margin: 20px auto;
   padding: 10px;
+  background-color: #f4f4f4; /* Light background for contrast */
+  border: 1px solid #ddd; /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  max-width: 600px; /* Limit the width */
 }
 
-button {
-  text-align: center;
-  background-color: #666;
-  border: none;
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 40px;
-  border-radius: 10px;
-  color: white;
-  font-size: 22px;
+/* Style for the genre dropdown */
+#genre-filter {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #333;
   cursor: pointer;
-  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+#genre-filter:hover {
+  border-color: #3498db; /* Highlight border on hover */
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Subtle blue glow */
+}
+
+#genre-filter:focus {
+  outline: none;
+  border-color: #3498db; /* Highlight border on focus */
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.5); /* Subtle blue glow */
+}
+
+/* Style for the Apply Filter button */
+#apply-genre-filter {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #3498db; /* Blue background */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+#apply-genre-filter:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+#apply-genre-filter:active {
+  background-color: #1c5985; /* Even darker blue on click */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+  transform: scale(0.98); /* Slightly shrink the button on click */
 }
